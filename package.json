@@ -8,8 +8,11 @@
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
+    "predeploy":"npm run build", 
+    "deploy":"gh-pages -d dist",
     "test": "vitest",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage",
+    "homepage": "https://github.com/TrangLe265/todolistbite"
   },
   "dependencies": {
     "react": "^18.3.1",
