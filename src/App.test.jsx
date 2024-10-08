@@ -25,3 +25,26 @@ test("add todo", () =>{
     const table = screen.getByRole("table"); 
     expect(table).toHaveTextContent(/Go to cafe/i); 
 }); 
+
+test("clear todo", () => {
+    render(<App />); 
+    const desc = screen.getByPlaceholderText("Description");
+    fireEvent.change(desc, {target: {value:"Go to cafe"} }); 
+
+    const date = screen.getByPlaceholderText("Date"); 
+    fireEvent.change(date, {target: {value:"29.01.2023"} }); 
+
+    const button = screen.getByText("Add");
+    fireEvent.click(button); 
+
+    const table = screen.getByRole("table"); 
+    expect(table).toHaveTextContent(/Go to cafe/i); 
+
+    const clearButton = screen.getByText("Clear");
+    fireEvent.click(clearButton); 
+
+    const rows = screen.queryAllByRole("row");
+    expect(rows).toHaveLength(0);
+    
+     
+})
